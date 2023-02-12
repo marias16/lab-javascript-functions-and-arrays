@@ -54,7 +54,23 @@ function sum(sumArray) {
     return 0
   } else {
     sumArray.forEach((num) => {
-      sumTotal += num;
+      switch (typeof num) {
+        case ('string'):
+          sumTotal += num.length;
+        break;
+        case('number'):
+          sumTotal += num;
+        break;
+        case('boolean'):
+          if (num === true) {
+            sumTotal += 1;
+          }
+        break;
+        case('object'):
+        case('array'):
+          throw new Error("Unsupported data type sir or ma'am");
+        break;
+      }
     })
   }
   return sumTotal;
