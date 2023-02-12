@@ -47,7 +47,7 @@ function sumNumbers(sumArray) {
 
 
 // Iteration #3.1 Bonus:
-function sum() {
+function sum(sumArray) {
   //pending
   let sumTotal = 0;
   if (sumArray.length === 0) {
@@ -95,7 +95,18 @@ function averageWordLength(arrWords) {
 }
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arrWords) {
+  //pending
+  let sumTotal = 0;
+  if (arrWords.length === 0) {
+    return null;
+  } else {
+    arrWords.forEach((word) => {
+      sumTotal += word.length;
+    })
+  }
+  return sumTotal / arrWords.length;
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -112,7 +123,19 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArr) {
+  let uniquifiedArray = [];
+  if (wordsArr.length === 0) {
+    return null;
+  } else {
+    wordsArr.forEach ((word) => {
+      if (!uniquifiedArray.includes(word)) {
+        uniquifiedArray.push(word);
+      }
+    })
+  }
+  return uniquifiedArray;
+}
 
 
 
