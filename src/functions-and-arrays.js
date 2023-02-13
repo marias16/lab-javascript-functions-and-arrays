@@ -225,7 +225,41 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arrMatrix) {
+  //we want to find the greatest product we can obtain taking only 4 numbers of all of the arrays
+  //we initialize the array of numbers that is going to store the greatest 4 factors
+  const arrProd = arrMatrix[0].slice(0, 4);
+
+  //we declare a function to find the the smallest factor in the previous array.
+  function findSmallestIndex(arr) {
+    let smallestIndex = 0;
+    for (let i = 1; i<= arr.length; i++) {
+      if(arr[i]>arr[smallestIndex]) {
+        smallestIndex = i;
+      }
+    }
+    return arr[smallestIndex];
+  }
+
+  //we save the value of the smallest factor into a variable
+  const smallFactor = findSmallestIndex(arrProd); 
+
+  //we iterate through the arrays to find the greatest factors.
+  //every time the loop finds a number that is bigger than one of the factors in arrProd, it will take the place of the smallest number
+
+  arrMatrix.forEach((arr) => {
+    arr.forEach((num) => {
+      arrProd.forEach((factor) => {
+        if(num>factor) {
+          smallFactor = num;
+        }
+      });
+    });
+  });
+
+  return arrProd[0] * arrProd[1] * arrProd[2] * arrProd[3]
+
+}
 
 
 
