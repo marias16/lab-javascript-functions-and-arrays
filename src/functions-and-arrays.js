@@ -112,14 +112,25 @@ function averageWordLength(arrWords) {
 
 // Bonus - Iteration #4.1
 function avg(arrWords) {
-  //pending
   let sumTotal = 0;
   if (arrWords.length === 0) {
     return null;
   } else {
     arrWords.forEach((word) => {
-      sumTotal += word.length;
-    })
+      switch(typeof word) {
+      case 'string':
+        sumTotal += word.length;
+        break;
+      case 'number':
+        sumTotal += word;
+        break;
+      case 'boolean':
+        if(word === true) {
+          sumTotal += 1;
+        }
+        break;
+      }
+    });
   }
   return sumTotal / arrWords.length;
 }
